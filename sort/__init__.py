@@ -60,3 +60,26 @@ class CombSort:
                     arr[k + gap] = buff
                     swapped = True
         return arr
+
+
+class QuickSort:
+    @staticmethod
+    def apply(array):
+        def wrapper(arr):
+            if len(arr) < 2:
+                return arr
+            support = arr[len(arr) // 2]
+            less = []
+            equal = []
+            bigger = []
+            for x in arr:
+                if x < support:
+                    less.append(x)
+                elif x > support:
+                    bigger.append(x)
+                else:
+                    equal.append(x)
+            return wrapper(less) + equal + wrapper(bigger)
+
+        array_ = copy.copy(array)
+        return wrapper(array_)

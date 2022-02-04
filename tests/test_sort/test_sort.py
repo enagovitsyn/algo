@@ -1,4 +1,4 @@
-from sort import BubbleSort, ShakerSort, CombSort
+from sort import BubbleSort, ShakerSort, CombSort, QuickSort
 import pytest
 import pickle
 
@@ -20,3 +20,8 @@ def test_shaker_sort(test_arrs):
 @pytest.mark.parametrize("test_arrs", test_arrays)
 def test_comb_sort(test_arrs):
     assert CombSort.apply(test_arrs[0]) == test_arrs[1]
+
+
+@pytest.mark.parametrize("test_arrs", test_arrays)
+def test_quick_sort(test_arrs):
+    assert QuickSort.apply(test_arrs[0]) == test_arrs[1]
