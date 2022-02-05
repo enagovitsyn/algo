@@ -85,6 +85,41 @@ class QuickSort:
         return wrapper(array_)
 
 
+class MergeSort:
+    @staticmethod
+    def apply(array: List[Union[int, float]]) -> List[Union[int, float]]:
+        def merge_sort(arr):
+            if len(arr) < 2:
+                return arr
+            else:
+                middle = len(arr) // 2
+                left = arr[:middle]
+                right = arr[middle:]
+                return merge(merge_sort(left), merge_sort(right))
+
+        def merge(left, right):
+            left_index = 0
+            right_index = 0
+            merged = []
+            while (left_index < len(left)) and (right_index < len(right)):
+                if left[left_index] <= right[right_index]:
+                    merged.append(left[left_index])
+                    left_index += 1
+                else:
+                    merged.append(right[right_index])
+                    right_index += 1
+            while left_index < len(left):
+                merged.append(left[left_index])
+                left_index += 1
+            while right_index < len(right):
+                merged.append((right[right_index]))
+                right_index += 1
+            return merged
+
+        array_ = array.copy()
+        return merge_sort(array_)
+
+
 if __name__ == "__main__":
     train_array = [-1, 10, 8, 3, 8, 9]
-    print(QuickSort.apply(train_array))
+    print(MergeSort.apply(train_array))
