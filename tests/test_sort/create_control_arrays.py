@@ -5,7 +5,10 @@ import matplotlib.pyplot as plt
 
 
 def create_array(n=10):
-    return np.random.randint(-100, high=100, size=n).tolist()
+    if np.random.random() < 0.5:
+        return np.random.randint(-100, high=100, size=n).tolist()
+    else:
+        return np.random.random(size=n).tolist()
 
 
 def create_control(count_test=1000):
